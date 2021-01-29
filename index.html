@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mealz</title>
+    <link href="./css/main.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script defer src="js/app2.js"></script>
+    <script type="module" src="src/app.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="brandTitle">
+        <a class="headerButton"> <img class="logo" src="./img/logo.gif" /></a>
+      </div>
+      <a href="#" class="toggleButton">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbarLinks">
+        <ul>
+          <li>
+            <div class="navRow">
+              <i class="icon material-icons">&#xe02f;</i>
+              <div class="dropdown">
+                <button class="navItem category dropbtn">
+                  Search By Category
+                </button>
+                <div class="dropdownContent categoryDropdown"></div>
+              </div>
+            </div>
+          </li>
+          <span class="hspace"></span>
+          <div class="navRow">
+            <i class="icon material-icons">&#xe0c8;</i>
+            <div class="dropdown">
+              <button class="navItem category dropbtn">
+                Search By Location
+              </button>
+              <div class="dropdownContent locationDropdown"></div>
+            </div>
+          </div>
+          <span class="hspace"></span>
+          <li>
+            <div class="navRow navRowSearch navRowBg">
+              <i class="icon material-icons searchIcon">&#xe8b6;</i>
+              <input
+                class="navItem search searchMeal navRowBg"
+                type="search"
+                placeholder="Search Meals"
+              />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main allMealsView">
+      <div class="container">
+        <div class="row cardRow"></div>
+      </div>
+
+      <div class="pagination">
+        <div class="paginationItem">1</div>
+        <div class="paginationItem">2</div>
+        <div class="paginationItem">3</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footerItem">Made with &hearts; by Akhildev</div>
+    </div>
+  </body>
+</html>
