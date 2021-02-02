@@ -1,6 +1,37 @@
 const categoryDropdown = document.querySelector('.categoryDropdown');
-const locationDropdown = document.querySelector('.locationDropdown');
+const locationDropdown = document.querySelector('.locationRow');
 const pagination = document.querySelector('.pagination');
+
+export const createCardMarkup = function (
+  id,
+  imageUrl,
+  name,
+  categoryName,
+  locationName
+) {
+  return `
+      <div class="card cardButton ${categoryName}" data-id="${id}">
+        <div class="cardImageDiv">
+            <img class="cardImage"
+              src="${imageUrl}"
+            />
+            </div>
+          <div class="cardDetails">
+            <div class="cardName">${name}</div>
+            <div class="cardCategory  ${categoryName}-text">
+              <i class="icon material-icons">&#xe02f;</i>${titleCase(
+                categoryName
+              )}
+            </div>
+            <div class="cardArea">
+              <i class="icon material-icons">&#xe0c8;</i>${titleCase(
+                locationName
+              )}
+          </div>
+        </div>
+      </div>
+    `;
+};
 
 export const createSinglePageMarkup = function (
   imageUrl,
@@ -24,10 +55,10 @@ export const createSinglePageMarkup = function (
               <div class="singleMealName singleMealPadding">${name}</div>
               <hr />
               <div class="singleMealCategory singleMealPadding">
-                <label>Category: </label>${categoryName}
+                <label>Category: </label>${titleCase(categoryName)}
               </div>
               <div class="singleMealArea singleMealPadding">
-                <label>Location: </label>${locationName}
+                <label>Location: </label>${titleCase(locationName)}
               </div>
               <div class="singleMealIngredients singleMealPadding">
                 <label class="detailsLabsels">Ingredients: </label><br />
@@ -62,43 +93,6 @@ export const createSinglePageMarkup = function (
               </div>
             </div>
           </div>`;
-};
-
-export const createIngredientMarkup = function (ingredients) {
-  let html = '';
-  ingredients.forEach((ingredient) => {
-    for (const ing of Object.entries(ingredient)) {
-      html += `<li>${ing[0] + ' ' + ing[1]}</li>`;
-    }
-  });
-  return html;
-};
-
-export const createCardMarkup = function (
-  id,
-  imageUrl,
-  name,
-  categoryName,
-  locationName
-) {
-  return `
-      <div class="card cardButton ${categoryName}" data-id="${id}">
-        <div class="cardImageDiv">
-            <img class="cardImage"
-              src="${imageUrl}"
-            />
-            </div>
-          <div class="cardDetails">
-            <div class="cardName">${name}</div>
-            <div class="cardCategory">
-              <i class="icon material-icons">&#xe02f;</i>${categoryName}
-            </div>
-            <div class="cardArea">
-              <i class="icon material-icons">&#xe0c8;</i>${locationName}
-          </div>
-        </div>
-      </div>
-    `;
 };
 
 export const createPaginationMarkup = function (
@@ -152,14 +146,42 @@ export const createPaginationMarkup = function (
 
 export const createLocationMarkup = function (location) {
   for (const locationObj of Object.values(location)) {
-    const locationMarkup = `<a class="locationButton" data-id="${locationObj._id}">${locationObj.locationName}</a>`;
+    const locationMarkup = `<a class="locationButton" data-id="${
+      locationObj._id
+    }">${titleCase(locationObj.locationName)}</a>`;
     locationDropdown.insertAdjacentHTML('beforeend', locationMarkup);
   }
 };
 
 export const createCategoryMarkup = function (category) {
   for (const categoryObj of Object.values(category)) {
-    const categoryMarkup = `<a class="categoryButton"  data-id="${categoryObj._id}">${categoryObj.categoryName}</a>`;
+    const categoryMarkup = `<a class="categoryButton" data-id="${
+      categoryObj._id
+    }">${titleCase(categoryObj.categoryName)}</a>`;
     categoryDropdown.insertAdjacentHTML('beforeend', categoryMarkup);
   }
+};
+
+export const createIngredientMarkup = function (ingredients) {
+  let html = '';
+  ingredients.forEach((ingredient) => {
+    for (const ing of Object.entries(ingredient)) {
+      html += `<li>${ing[0] + ' ' + ing[1]}</li>`;
+    }
+  });
+  return html;
+};
+
+export const createEmptyPageMarkup = function () {
+  return `<div class="emptyPage"><h1>No Meals Found!</h1></div>`;
+};
+
+const titleCase = (string) => {
+  return string
+    .toLowerCase()
+    .split(' ')
+    .map(function (word) {
+      return word.replace(word[0], word[0].toUpperCase());
+    })
+    .join(' ');
 };

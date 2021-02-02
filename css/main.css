@@ -100,6 +100,17 @@ body {
   cursor: pointer;
 }
 
+.locationRow {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.locationButton {
+  width: 150px;
+}
+
 .category {
   font-size: 16px;
   border: none;
@@ -557,6 +568,55 @@ a:link {
   );
 }
 
+/* Category wise text color */
+.chicken-text {
+  color: rgba(255, 0, 0, 1);
+}
+.beef-text {
+  color: rgba(255, 91, 0, 1);
+}
+.breakfast-text {
+  color: rgba(1, 0, 255, 1);
+}
+.dessert-text {
+  color: rgba(255, 0, 170, 1);
+}
+.goat-text {
+  color: rgba(139, 0, 0, 1);
+}
+.lamb-text {
+  color: rgba(210, 0, 0, 1);
+}
+.miscellaneous-text {
+  color: rgba(0, 210, 178, 1);
+}
+.vegetarian-text {
+  color: rgb(0, 209, 66);
+}
+.pasta-text {
+  color: rgb(164, 170, 0);
+}
+.pork-text {
+  color: rgb(212, 138, 0);
+}
+.seafood-text {
+  color: rgb(0, 169, 172);
+}
+.side-text {
+  color: rgb(170, 167, 0);
+}
+.starter-text {
+  color: rgba(155, 0, 218, 1);
+}
+.vegan-text {
+  color: rgb(148, 211, 0);
+}
+/*---------------------------*/
+
 .hidden {
   display: none;
+}
+
+.emptyPage {
+  margin: 100px;
 }

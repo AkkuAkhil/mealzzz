@@ -1,11 +1,11 @@
 import { serverUrl } from './config.js';
 import * as createViews from './views/createView.js';
+const footer = document.querySelector('.footer');
 const cardContainer = document.querySelector('.cardRow');
 const pagination = document.querySelector('.pagination');
 const navbarLinks = document.querySelectorAll('.navbarLinks')[0];
 
 export const fetchMeals = async function (fetchUrl, page = 1) {
-  pagination.classList.remove('hidden');
   let fetchQuery = '';
   let totalUrl = '';
   if (!fetchUrl.includes('?page')) {
@@ -15,6 +15,16 @@ export const fetchMeals = async function (fetchUrl, page = 1) {
   const mealsDataDoc = await fetch(totalUrl);
   const mealsData = await mealsDataDoc.json();
   const { meals } = mealsData;
+  pagination.classList.remove('hidden');
+  footer.classList.remove('hidden');
+  if (meals.length === 0) {
+    pagination.classList.add('hidden');
+    footer.classList.add('hidden');
+    const emptyPageMarkup = createViews.createEmptyPageMarkup();
+    cardContainer.innerHTML = emptyPageMarkup;
+    console.log('No meals', emptyPageMarkup);
+    return;
+  }
 
   createViews.createPaginationMarkup(
     +mealsData.currentPage,
@@ -56,7 +66,6 @@ export const viewMealDetails = async function (mealId) {
     meals.youtubeUrl,
     meals.sourceUrl
   );
-  cardContainer.innerHTML = '';
   cardContainer.innerHTML = singlePageMarkup;
 };
 
