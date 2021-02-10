@@ -41,7 +41,8 @@ export const createSinglePageMarkup = function (
   ingredients,
   instructions,
   youtubeUrl,
-  sourceUrl
+  sourceUrl,
+  createdAt
 ) {
   return `
           <div class="singleMeal">
@@ -54,6 +55,9 @@ export const createSinglePageMarkup = function (
             <div class="singleMealDetails">
               <div class="singleMealName singleMealPadding">${name}</div>
               <hr />
+              <div class="singleMealDate singleMealPadding">
+                <label>Added at </label>${createdAt}
+              </div>
               <div class="singleMealCategory singleMealPadding">
                 <label>Category: </label>${titleCase(categoryName)}
               </div>

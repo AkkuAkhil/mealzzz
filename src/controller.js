@@ -56,6 +56,15 @@ export const viewMealDetails = async function (mealId) {
   const ingredientMarkup = createViews.createIngredientMarkup(
     meals.ingredients
   );
+  const createdAt = new Intl.DateTimeFormat('en-IN', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  }).format(new Date(meals.createdAt));
+
   const singlePageMarkup = createViews.createSinglePageMarkup(
     meals.imageUrl,
     meals.name,
@@ -64,7 +73,8 @@ export const viewMealDetails = async function (mealId) {
     ingredientMarkup,
     meals.instruction,
     meals.youtubeUrl,
-    meals.sourceUrl
+    meals.sourceUrl,
+    createdAt
   );
   cardContainer.innerHTML = singlePageMarkup;
 };
